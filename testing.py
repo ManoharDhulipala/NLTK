@@ -25,3 +25,10 @@ for word in wordArray:
 	lemmatizeArray.append(lemmatizeWord)
 
 #print(lemmatizeArray)
+
+#Parts of Speech example
+POSArray = []
+for word in wordArray:
+	POSArray.append(nltk.pos_tag([word]))
+
+print(POSArray)
