@@ -31,7 +31,7 @@ POSArray = []
 for word in wordArray:
 	POSArray.append(nltk.pos_tag([word]))
 
-#print(POSArray)
+print(POSArray)
 
 #Named Entity Recognition
 
