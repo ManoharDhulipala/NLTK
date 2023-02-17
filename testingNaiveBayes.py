@@ -10,8 +10,8 @@ organizationRatings = [1, 4, 16, 58, 162]
 x = np.array(clarityRatings)
 y = np.array(organizationRatings)
 
-x = np.reshape(x, (0,1,8,74,138))
-y = np.reshape(y, (1,4,16,58,162))
+x = x.reshape(-1,1)
+y = y.reshape(-1,1)
 
 
 xTrain, xTest, yTrain, yTest = train_test_split(x,y,test_size=0.2, random_state = 42)
