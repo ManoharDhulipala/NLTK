@@ -19,6 +19,7 @@ from nltk.corpus import stopwords
 i = 0
 correct = 0
 generatedReview = []
+ActualReview = []
 for reviews in df.Review:
 	actualReview = df.Rating[i]
 	reviews = TextBlob(reviews)
@@ -36,6 +37,38 @@ for reviews in df.Review:
 	if (generatedReview[-1] ==  actualReview):
 		correct = correct + 1
 	print("Review: ", generatedReview[-1], " Actual Review: ", actualReview)
-
+	ActualReview.append(actualReview)
 	i = i + 1
 print("Accuracy: ", correct/(i+1))
+
+positive = 0
+negative = 0
+
+print(len(generatedReview))
+print(len(ActualReview))
+i = 0
+for review in generatedReview:
+	if review == ("Positive"):
+		positive = positive + 1
+	else:
+		negative = negative + 1
+
+y = np.array([positive, negative])
+mylabels = ["Positive Reviews", "Negative Reviews"]
+
+plt.pie(y, labels = mylabels)
+plt.show()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
