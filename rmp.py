@@ -18,6 +18,10 @@ df = pandas.read_csv("RateMyProfData.csv")
 from nltk.corpus import stopwords
 i = 0
 correct = 0
+falseNegative = 0
+falsePositive = 0
+Positive = 0
+Negative = 0
 generatedReview = []
 ActualReview = []
 for reviews in df.Review:
@@ -36,16 +40,29 @@ for reviews in df.Review:
 		generatedReview.append("Negative")
 	if (generatedReview[-1] ==  actualReview):
 		correct = correct + 1
+	if (generatedReview[-1] == "Negative" and actualReview == "Positive"):
+		falseNegative = falseNegative+1
+	if (generatedReview[-1] == "Positive" and actualReview == "Negative"):
+		falsePositive = falsePositive+1
+	if (generatedReview[-1] == "Positive" and actualReview == "Positive"):
+		Positive = Positive+1
+	if (generatedReview[-1] == "Negative" and actualReview == "Negative"):
+		Negative = Negative+1
+		
+			
+		
 	print("Review: ", generatedReview[-1], " Actual Review: ", actualReview)
 	ActualReview.append(actualReview)
 	i = i + 1
-print("Accuracy: ", correct/(i+1))
 
 positive = 0
 negative = 0
+print([Positive, falsePositive])
+print([falseNegative, Negative])
+print("Accuracy: ", correct/(i+1))
+print("Precision: ",Positive/(Positive+falsePositive)) 
 
-print(len(generatedReview))
-print(len(ActualReview))
+
 i = 0
 for review in generatedReview:
 	if review == ("Positive"):
@@ -58,7 +75,6 @@ mylabels = ["Positive Reviews", "Negative Reviews"]
 
 plt.pie(y, labels = mylabels)
 plt.show()
-
 
 
 
