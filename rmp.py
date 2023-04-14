@@ -69,48 +69,17 @@ for reviews in df.Review:
 		
 			
 		
-	#print("Review: ", generatedReview[-1], " Actual Review: ", actualReview)
+	print("Review: ", generatedReview[-1], " Actual Review: ", actualReview)
 	ActualReview.append(actualReview)
 	i = i + 1
 
 positive = 0
 negative = 0
-#print([Positive, falsePositive])
-#print([falseNegative, Negative])
-#print("Accuracy: ", correct/(i+1))
-#print("Precision: ",Positive/(Positive+falsePositive)) 
-teacherQualities = ["Passionate", "Patient", "Knowledgeable", "Organized", "Adaptable", "Uninspiring", "Impatient", "Ignorant", "Disorganized", "Inflexible"]
-qualityDict = {
-  "Passionate": 0,
-  "Patient": 1,
-  "Knowledgeable": 2,
-  "Organized": 3,
-  "Adaptable": 4,
-  "Uninspiring": 5,
-  "Impatient": 6,
-  "Ignorant": 7,
-  "Disorganized": 8,
-  "Inflexible": 9,
-}
-i = 0
-qualityScore = [0,0,0,0,0,0,0,0,0,0]
-for review in generatedReview:
-	if review == ("Positive"):
-		positive = positive + 1
-	else:
-		negative = negative + 1
-print(type(wordList))
+print([Positive, falsePositive])
+print([falseNegative, Negative])
+print("Accuracy: ", correct/(i+1))
+print("Precision: ",Positive/(Positive+falsePositive)) 
 
-for word in wordList:
-	for quality in teacherQualities:
-		word = Word(word)
-		quality = Word(quality)
-		similarity_score = get_word_similarity(word, quality)
-		if similarity_score > 0.4:
-			qualityScore[qualityDict[quality]] = qualityScore[qualityDict[quality]] + 1	
-			
-
-print(qualityScore)
 
 y = np.array([positive, negative])
 mylabels = ["Positive Reviews", "Negative Reviews"]
