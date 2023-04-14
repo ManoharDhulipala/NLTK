@@ -1,6 +1,6 @@
 import openai
 
-openai.api_key = "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"
+openai.api_key ="YOUR API KEY"
 model_id = 'gpt-3.5-turbo'
 
 def ChatGPT_conversation(conversation):
@@ -8,8 +8,8 @@ def ChatGPT_conversation(conversation):
         model=model_id,
         messages=conversation
     )
-    # api_usage = response['usage']
-    # print('Total token consumed: {0}'.format(api_usage['total_tokens']))
+    api_usage = response['usage']
+    print('Total token consumed: {0}'.format(api_usage['total_tokens']))
     # stop means complete
     # print(response['choices'][0].finish_reason)
     # print(response['choices'][0].index)
